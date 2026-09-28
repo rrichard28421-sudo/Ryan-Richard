@@ -1,0 +1,24 @@
+equipamentos = [
+    {"id": "Respirador 1", "setor": "UTI", "dias": 45, "revisado": True},
+    {"id": "Respirador 2", "setor": "UTI", "dias": 210, "revisado": True},
+    {"id": "Bomba 1", "setor": "Triagem", "dias": 30, "revisado": False},
+    {"id": "Monitor 1", "setor": "UTI", "dias": 100, "revisado": True}
+]
+
+prazo = 180
+
+# Tarefa 1
+todos_no_prazo = all(e["dias"] <= prazo and e["revisado"]
+                     for e in equipamentos)
+print("Todos estão dentro do prazo?", todos_no_prazo)
+
+# Tarefa 2
+existe_sem_revisao = any(e["setor"] == "UTI" and not e["revisado"]
+                         for e in equipamentos)
+print("Existe equipamento da UTI sem revisão?", existe_sem_revisao)
+
+# Tarefa 3
+problemas = [e["id"] for e in equipamentos
+             if e["dias"] > prazo or not e["revisado"]]
+
+print("Equipamentos com problema:", problemas)
